@@ -8,9 +8,12 @@
     "lint:html": "npx htmlhint '**/*.html'",
     "lint:css": "npx stylelint '**/*.css'"
   },
-  "devDependencies": {
-    "htmlhint": "^1.1.4",
-    "stylelint": "^16.13.2",
-    "stylelint-config-standard": "^37.0.0"
-  }
+
+
+ "devDependencies": {
+  "stylelint": "^13.13.1",
+  "stylelint-config-standard": "^22.0.0",
+  "htmlhint": "^0.14.2"
+}
+
 }

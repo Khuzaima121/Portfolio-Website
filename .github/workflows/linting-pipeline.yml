@@ -19,11 +19,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16  # Specify the Node.js version
+          node-version: 20  # Specify the Node.js version
 
       - name: Install dependencies
-        run: |
-          npm install --save-dev htmlhint stylelint  # Install HTMLHint and Stylelint
+        run: npm install  # This installs everything listed in package.json
 
       - name: Lint HTML files with HTMLHint
         run: npx htmlhint "**/*.html"  # Adjust the glob pattern if needed
