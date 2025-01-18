@@ -1,37 +1,31 @@
-name: Linting Pipeline
+name: Lint HTML and CSS
 
 on:
   push:
     branches:
-      - develop
+      - develop  # Trigger on push to the develop branch
   pull_request:
     branches:
-      - develop
+      - develop  # Trigger on pull requests to the develop branch
 
 jobs:
-  linting:
-    runs-on: ubuntu-latest
+  lint:
+    runs-on: ubuntu-latest  # Use an Ubuntu runner
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: 16  # Specify the Node.js version
 
       - name: Install dependencies
-        run: |
-          npm install --save-dev htmlhint stylelint
+        run: npm install --save-dev htmlhint stylelint  # Install HTMLHint and Stylelint
 
-      - name: List files in repository
-        run: |
-          ls -R
+      - name: Lint HTML files with HTMLHint
+        run: npx htmlhint "**/*.html"  # Adjust the glob pattern if needed
 
-      - name: Run HTMLHint
-        run: |
-          npx htmlhint "**/*.html"
-
-      - name: Run Stylelint
-        run: |
-          npx stylelint "**/*.css"
+      - name: Lint CSS files with Stylelint
+        run: npx stylelint "**/*.css"  # Adjust the glob pattern if needed
